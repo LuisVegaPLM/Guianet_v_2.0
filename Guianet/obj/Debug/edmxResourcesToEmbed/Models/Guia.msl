@@ -126,6 +126,7 @@
     <EntitySetMapping Name="ParticipantProducts">
       <EntityTypeMapping TypeName="GuiaModel.ParticipantProducts">
         <MappingFragment StoreEntitySet="ParticipantProducts">
+          <ScalarProperty Name="URLVideo" ColumnName="URLVideo" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="ClientId" ColumnName="ClientId" />
           <ScalarProperty Name="EditionId" ColumnName="EditionId" />
@@ -310,6 +311,7 @@
     <EntitySetMapping Name="ClientPhones">
       <EntityTypeMapping TypeName="GuiaModel.ClientPhones">
         <MappingFragment StoreEntitySet="ClientPhones">
+          <ScalarProperty Name="LocationLada" ColumnName="LocationLada" />
           <ScalarProperty Name="AddressId" ColumnName="AddressId" />
           <ScalarProperty Name="ClientId" ColumnName="ClientId" />
           <ScalarProperty Name="Active" ColumnName="Active" />

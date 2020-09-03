@@ -696,14 +696,15 @@
       <PropertyRef Name="ClientId" />
       <PropertyRef Name="ProductId" />
     </Key>
-    <Property Name="HTMLContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="XMLContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HTMLContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="XMLContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="EditionId" Type="Int32" Nullable="false" />
     <Property Name="ClientId" Type="Int32" Nullable="false" />
     <Property Name="ProductId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="EditionClientProducts" Relationship="GuiaModel.R_168" FromRole="ParticipantProducts" ToRole="EditionClientProducts" />
     <NavigationProperty Name="EditionClientProductShots" Relationship="GuiaModel.R_123" FromRole="ParticipantProducts" ToRole="EditionClientProductShots" />
     <NavigationProperty Name="ProductContents" Relationship="GuiaModel.R_99" FromRole="ParticipantProducts" ToRole="ProductContents" />
+    <Property Name="URLVideo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="ClientProductLeafCategories">
     <Key>
@@ -1197,6 +1198,7 @@
     <Property Name="AddressId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="ClientAddresses" Relationship="GuiaModel.R_104" FromRole="ClientPhones" ToRole="ClientAddresses" />
     <NavigationProperty Name="PhoneTypes" Relationship="GuiaModel.R_31" FromRole="ClientPhones" ToRole="PhoneTypes" />
+    <Property Name="LocationLada" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="R_104">
     <End Type="GuiaModel.ClientAddresses" Role="ClientAddresses" Multiplicity="1" />
@@ -1238,7 +1240,7 @@
       <PropertyRef Name="ClientBrandTypeId" />
     </Key>
     <Property Name="ClientBrandTypeId" Type="Byte" Nullable="false" />
-    <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="ClientBrands" Relationship="GuiaModel.R_3" FromRole="ClientBrandTypes" ToRole="ClientBrands" />
   </EntityType>
@@ -1260,7 +1262,7 @@
     </Key>
     <Property Name="EditionClientProductShotId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
-    <Property Name="ProductShot" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProductShot" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="EditionId" Type="Int32" />
     <Property Name="ClientId" Type="Int32" />
     <Property Name="ProductId" Type="Int32" />
@@ -1505,9 +1507,9 @@
       <PropertyRef Name="ClientId" />
       <PropertyRef Name="ProductId" />
     </Key>
-    <Property Name="PlainContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="HtmlContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PlainContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HtmlContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="AttributeId" Type="Int32" Nullable="false" />
     <Property Name="EditionId" Type="Int32" Nullable="false" />
     <Property Name="ClientId" Type="Int32" Nullable="false" />

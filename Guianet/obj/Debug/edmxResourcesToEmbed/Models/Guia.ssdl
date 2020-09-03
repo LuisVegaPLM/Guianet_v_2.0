@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="GuiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="GuiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Addresses">
     <Key>
       <PropertyRef Name="AddressId" />
     </Key>
+    <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Address" Type="varchar" MaxLength="255" />
     <Property Name="ZipCode" Type="varchar" MaxLength="30" />
     <Property Name="City" Type="varchar" MaxLength="100" />
+    <Property Name="CountryId" Type="tinyint" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="255" />
     <Property Name="Web" Type="varchar" MaxLength="100" />
-    <Property Name="Active" Type="bit" Nullable="false" />
-    <Property Name="CountryId" Type="tinyint" Nullable="false" />
-    <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Suburb" Type="varchar" MaxLength="255" />
-    <Property Name="StateId" Type="int" />
     <Property Name="Location" Type="varchar" MaxLength="255" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="StateId" Type="int" />
     <Property Name="Longitud" Type="varchar" MaxLength="255" />
     <Property Name="Latitud" Type="varchar" MaxLength="255" />
   </EntityType>
@@ -109,17 +109,17 @@
   </EntityType>
   <EntityType Name="ClientAdvertCategories">
     <Key>
+      <PropertyRef Name="EditionId" />
       <PropertyRef Name="ClientId" />
       <PropertyRef Name="AdvertId" />
-      <PropertyRef Name="EditionId" />
       <PropertyRef Name="CategoryThreeId" />
     </Key>
+    <Property Name="EditionId" Type="int" Nullable="false" />
     <Property Name="ClientId" Type="int" Nullable="false" />
     <Property Name="AdvertId" Type="int" Nullable="false" />
-    <Property Name="EditionId" Type="int" Nullable="false" />
     <Property Name="CategoryThreeId" Type="int" Nullable="false" />
-    <Property Name="AddedDate" Type="datetime" Nullable="false" />
     <Property Name="AdvertTypeId" Type="tinyint" />
+    <Property Name="AddedDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="ClientAdverts">
     <Key>
@@ -135,12 +135,12 @@
       <PropertyRef Name="ClientId" />
       <PropertyRef Name="BrandId" />
     </Key>
-    <Property Name="ClientBrandTypeId" Type="tinyint" />
-    <Property Name="Page" Type="varchar" MaxLength="50" />
-    <Property Name="ExpireDescription" Type="varchar" MaxLength="100" />
     <Property Name="EditionId" Type="int" Nullable="false" />
     <Property Name="ClientId" Type="int" Nullable="false" />
     <Property Name="BrandId" Type="int" Nullable="false" />
+    <Property Name="ClientBrandTypeId" Type="tinyint" />
+    <Property Name="ExpireDescription" Type="varchar" MaxLength="100" />
+    <Property Name="Page" Type="varchar" MaxLength="50" />
     <Property Name="AddedDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="ClientBrandTypes">
@@ -148,7 +148,7 @@
       <PropertyRef Name="ClientBrandTypeId" />
     </Key>
     <Property Name="ClientBrandTypeId" Type="tinyint" Nullable="false" />
-    <Property Name="Description" Type="varchar" MaxLength="30" />
+    <Property Name="Description" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ClientPhones">
@@ -164,6 +164,7 @@
     <Property Name="Active" Type="bit" Nullable="false" />
     <Property Name="ClientId" Type="int" Nullable="false" />
     <Property Name="AddressId" Type="int" Nullable="false" />
+    <Property Name="LocationLada" Type="varchar" MaxLength="5" />
   </EntityType>
   <EntityType Name="ClientProductAdverts">
     <Key>
@@ -194,8 +195,8 @@
     <Property Name="ClientId" Type="int" Nullable="false" />
     <Property Name="ProductId" Type="int" Nullable="false" />
     <Property Name="LeafCategoryId" Type="int" Nullable="false" />
-    <Property Name="Module" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="CategoryThreeId" Type="int" Nullable="false" />
+    <Property Name="Module" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="ClientProducts">
     <Key>
@@ -212,6 +213,7 @@
     </Key>
     <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientIdParent" Type="int" />
+    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CompanyName" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="Image" Type="varchar" MaxLength="50" />
     <Property Name="Active" Type="bit" Nullable="false" />
@@ -219,7 +221,6 @@
     <Property Name="Description" Type="varchar(max)" />
     <Property Name="AlphabetId" Type="tinyint" />
     <Property Name="CountryId" Type="tinyint" />
-    <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="ClientTypes">
     <Key>
@@ -326,7 +327,7 @@
     </Key>
     <Property Name="EditionClientProductShotId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
-    <Property Name="ProductShot" Type="varchar" MaxLength="100" />
+    <Property Name="ProductShot" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="EditionId" Type="int" />
     <Property Name="ClientId" Type="int" />
     <Property Name="ProductId" Type="int" />
@@ -447,11 +448,12 @@
       <PropertyRef Name="ClientId" />
       <PropertyRef Name="ProductId" />
     </Key>
-    <Property Name="HTMLContent" Type="text" />
-    <Property Name="XMLContent" Type="text" />
+    <Property Name="HTMLContent" Type="nvarchar(max)" />
+    <Property Name="XMLContent" Type="nvarchar(max)" />
     <Property Name="EditionId" Type="int" Nullable="false" />
     <Property Name="ClientId" Type="int" Nullable="false" />
     <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="URLVideo" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="PhoneTypes">
     <Key>
@@ -479,9 +481,9 @@
       <PropertyRef Name="ClientId" />
       <PropertyRef Name="ProductId" />
     </Key>
-    <Property Name="PlainContent" Type="text" />
-    <Property Name="Content" Type="text" />
-    <Property Name="HtmlContent" Type="text" />
+    <Property Name="PlainContent" Type="nvarchar(max)" />
+    <Property Name="Content" Type="nvarchar(max)" />
+    <Property Name="HtmlContent" Type="nvarchar(max)" />
     <Property Name="AttributeId" Type="int" Nullable="false" />
     <Property Name="EditionId" Type="int" Nullable="false" />
     <Property Name="ClientId" Type="int" Nullable="false" />
@@ -684,6 +686,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="R_154">
+    <End Role="LeafCategories" Type="Self.LeafCategories" Multiplicity="1" />
+    <End Role="LeafHomogeneousCategories" Type="Self.LeafHomogeneousCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LeafCategories">
+        <PropertyRef Name="LeafCategoryId" />
+      </Principal>
+      <Dependent Role="LeafHomogeneousCategories">
+        <PropertyRef Name="LeafCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="R_155">
     <End Role="ClientProducts" Type="Self.ClientProducts" Multiplicity="1" />
     <End Role="ClientProductLeafCategories" Type="Self.ClientProductLeafCategories" Multiplicity="*" />
@@ -789,6 +803,18 @@
         <PropertyRef Name="EditionId" />
         <PropertyRef Name="ClientId" />
         <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_180">
+    <End Role="CategoryThree" Type="Self.CategoryThree" Multiplicity="1" />
+    <End Role="LeafHomogeneousCategories" Type="Self.LeafHomogeneousCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryThree">
+        <PropertyRef Name="CategoryThreeId" />
+      </Principal>
+      <Dependent Role="LeafHomogeneousCategories">
+        <PropertyRef Name="CategoryThreeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1530,6 +1556,10 @@
       <End Role="ImageSizes" EntitySet="ImageSizes" />
       <End Role="EditionProductShotSizes" EntitySet="EditionProductShotSizes" />
     </AssociationSet>
+    <AssociationSet Name="R_154" Association="Self.R_154">
+      <End Role="LeafCategories" EntitySet="LeafCategories" />
+      <End Role="LeafHomogeneousCategories" EntitySet="LeafHomogeneousCategories" />
+    </AssociationSet>
     <AssociationSet Name="R_155" Association="Self.R_155">
       <End Role="ClientProducts" EntitySet="ClientProducts" />
       <End Role="ClientProductLeafCategories" EntitySet="ClientProductLeafCategories" />
@@ -1561,6 +1591,10 @@
     <AssociationSet Name="R_168" Association="Self.R_168">
       <End Role="EditionClientProducts" EntitySet="EditionClientProducts" />
       <End Role="ParticipantProducts" EntitySet="ParticipantProducts" />
+    </AssociationSet>
+    <AssociationSet Name="R_180" Association="Self.R_180">
+      <End Role="CategoryThree" EntitySet="CategoryThree" />
+      <End Role="LeafHomogeneousCategories" EntitySet="LeafHomogeneousCategories" />
     </AssociationSet>
     <AssociationSet Name="R_181" Association="Self.R_181">
       <End Role="Manufacturers" EntitySet="Manufacturers" />

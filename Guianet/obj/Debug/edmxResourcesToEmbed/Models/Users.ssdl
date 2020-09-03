@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="PLMUsersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="PLMUsersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="ActivityLogs">
     <Key>
       <PropertyRef Name="ActivityLogId" />
@@ -76,8 +76,8 @@
       <PropertyRef Name="UserId" />
       <PropertyRef Name="CountryId" />
     </Key>
-    <Property Name="UserId" Nullable="false" Type="int" />
-    <Property Name="CountryId" Nullable="false" Type="int" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -145,8 +145,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserCountries_Countries">
-    <End Type="Self.Countries" Multiplicity="1" Role="Countries" />
-    <End Type="Self.UserCountries" Multiplicity="*" Role="UserCountries" />
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="UserCountries" Type="Self.UserCountries" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Countries">
         <PropertyRef Name="CountryId" />
@@ -157,8 +157,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserCountries_Users">
-    <End Type="Self.Users" Multiplicity="1" Role="Users" />
-    <End Type="Self.UserCountries" Multiplicity="*" Role="UserCountries" />
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserCountries" Type="Self.UserCountries" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Users">
         <PropertyRef Name="UserId" />
@@ -231,12 +231,12 @@
       <End Role="ApplicationUsers" EntitySet="ApplicationUsers" />
     </AssociationSet>
     <AssociationSet Name="FK_UserCountries_Countries" Association="Self.FK_UserCountries_Countries">
-      <End EntitySet="Countries" Role="Countries" />
-      <End EntitySet="UserCountries" Role="UserCountries" />
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="UserCountries" EntitySet="UserCountries" />
     </AssociationSet>
     <AssociationSet Name="FK_UserCountries_Users" Association="Self.FK_UserCountries_Users">
-      <End EntitySet="Users" Role="Users" />
-      <End EntitySet="UserCountries" Role="UserCountries" />
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserCountries" EntitySet="UserCountries" />
     </AssociationSet>
     <AssociationSet Name="FK_Users_Countries" Association="Self.FK_Users_Countries">
       <End Role="Countries" EntitySet="Countries" />
